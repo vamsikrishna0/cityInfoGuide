@@ -1,15 +1,5 @@
-/**
- * 
- */
 package com.jet.cp.weather.domain;
 
-/**
- * Title: DayWeather.java.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class DayWeather {
 
 

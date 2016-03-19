@@ -1,7 +1,4 @@
-/**
- * All rights reserved.
- * This software is the confidential and proprietary information
- */
+
 package com.jet.cp.controller;
 
 import org.apache.log4j.Logger;
@@ -14,13 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jet.cp.google.domain.GoogleFeedResponse;
 
 import io.swagger.annotations.ApiOperation;
-/**
- * Title: GoogleFeedController.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
+
 @RestController
 public class GoogleFeedController {
     private static final Logger logger = Logger.getLogger(GoogleFeedController.class);

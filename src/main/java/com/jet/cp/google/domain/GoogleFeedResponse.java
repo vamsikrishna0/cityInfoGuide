@@ -1,16 +1,5 @@
-/**
- * All rights reserved.
- * This software is the confidential and proprietary information
- */
 package com.jet.cp.google.domain;
 
-/**
- * Title: OpenweathermapForecastAPIResponse.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class GoogleFeedResponse {
 
    private static final long serialVersionUID = 1L;

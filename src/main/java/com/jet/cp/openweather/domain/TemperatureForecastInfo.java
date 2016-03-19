@@ -1,19 +1,8 @@
-/**
- * All rights reserved.
- * This software is the confidential and proprietary information
- */
 package com.jet.cp.openweather.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Title: TemperatureForecastInfo.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 @JsonIgnoreProperties(ignoreUnknown=true)
 //"main":{"temp":22.676,"temp_min":22.676,"temp_max":22.676,"pressure":920.93,"sea_level":1015.88,"grnd_level":920.93,"humidity":81},
 public class TemperatureForecastInfo {

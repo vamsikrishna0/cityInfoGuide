@@ -11,13 +11,7 @@ import com.jet.cp.user.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-/**
- * Title: UserServiceImpl.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
+
 @Component
 public class UserServiceImpl implements UserService {
     @Autowired

@@ -3,14 +3,7 @@ package com.jet.cp.google.domain;
 import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-/**
- * Title: 
- * Description: GoogleFeedDomain.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
+
 @Document(collection = "googlefeed")
 public class GoogleFeedDomain implements Serializable{
 

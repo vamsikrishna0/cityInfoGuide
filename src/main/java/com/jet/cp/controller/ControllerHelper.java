@@ -24,13 +24,6 @@ import com.jet.cp.yelp.domain.YelpFeedDomain;
 import com.jet.cp.yelp.domain.YelpResponse;
 import com.jet.cp.yelp.service.GetYelpFeed;
 
-/**
- * Title: ControllerHelper.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 @Component
 public class ControllerHelper {
     private static final Logger logger = Logger.getLogger(ControllerHelper.class);

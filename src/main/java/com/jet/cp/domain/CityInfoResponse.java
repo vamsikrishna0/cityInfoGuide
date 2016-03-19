@@ -4,13 +4,6 @@ import com.jet.cp.google.domain.GoogleFeedResponse;
 import com.jet.cp.weather.domain.AppWeatherResponse;
 import com.jet.cp.yelp.domain.YelpResponse;
 
-/**
- * Title: CityInfoResponse.java.java<br>
- * Description: <br>
- * Created: 16-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class CityInfoResponse {
 
    private GoogleFeedResponse googleFeedResponse;

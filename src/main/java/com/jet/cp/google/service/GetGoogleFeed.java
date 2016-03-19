@@ -1,7 +1,3 @@
-/**
- * All rights reserved.
- * This software is the confidential and proprietary information
- */
 package com.jet.cp.google.service;
 
 import org.apache.log4j.Logger;
@@ -19,15 +15,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jet.cp.google.domain.GoogleFeedResponse;
 
-
-/**
- * Title: GetGoogleFeed.java<br>
- * Description: Gets the Weather Information using the API
- *              provided by http://openweathermap.org/
- * Created: 209-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 @Component
 @ComponentScan
 @EnableAutoConfiguration

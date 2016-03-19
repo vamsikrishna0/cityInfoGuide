@@ -1,7 +1,3 @@
-/**
- * All rights reserved.
- * This software is the confidential and proprietary information
- */
 package com.jet.cp.yelp.service;
 
 import org.json.JSONObject;
@@ -13,13 +9,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jet.cp.yelp.domain.YelpResponse;
 
-/**
- * Title: GetYelpFeed.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class GetYelpFeed {
 
   OAuthService service;

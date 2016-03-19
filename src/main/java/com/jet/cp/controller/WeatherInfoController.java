@@ -1,7 +1,3 @@
-/**
- * All rights reserved.
- * This software is the confidential and proprietary information
- */
 package com.jet.cp.controller;
 
 import org.apache.log4j.Logger;
@@ -16,13 +12,6 @@ import com.jet.cp.weather.domain.AppWeatherResponse;
 
 import io.swagger.annotations.ApiOperation;
 
-/**
- * Title: WeatherInfoController.java.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 @RestController
 public class WeatherInfoController {
     private static final Logger logger = Logger.getLogger(WeatherInfoController.class);

@@ -3,13 +3,6 @@ package com.jet.cp.yelp.domain;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Title: YelpResponse.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class YelpResponse implements Serializable{
 
   private static final long serialVersionUID = 1L;

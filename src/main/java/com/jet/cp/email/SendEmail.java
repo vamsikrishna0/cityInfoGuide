@@ -9,13 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
-/**
- * Title: SendEmail.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 @Component
 public class SendEmail {
    private static final Logger logger = Logger.getLogger(SendEmail.class);

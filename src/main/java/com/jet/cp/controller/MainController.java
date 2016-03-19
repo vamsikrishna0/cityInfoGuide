@@ -11,15 +11,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import com.jet.cp.domain.CityInfoResponse;
 import io.swagger.annotations.ApiOperation;
 
-/**
- * Title: 
- * Description: MainController.java<br>
- * Description: <br>
- * Created: 16-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
-
 @RestController
 public class MainController {
     private static final Logger logger = Logger.getLogger(MainController.class);

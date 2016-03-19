@@ -13,13 +13,6 @@ import com.jet.cp.user.domain.User;
 
 import io.swagger.annotations.ApiOperation;
 
-/**
- * Title: UserController.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 @RestController
 public class UserController {
     private static final Logger logger = Logger.getLogger(UserController.class);

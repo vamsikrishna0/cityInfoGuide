@@ -1,17 +1,7 @@
-/**
- * 
- */
 package com.jet.cp.weather.domain;
 
 import java.util.List;
 
-/**
- * Title: AppForecastInfoResponse.java<br>
- * Description: <br>
- * Created: 09-Feb-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class AppForecastInfoResponse {
 
  private String city;

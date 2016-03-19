@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.jet.cp.openweather.domain;
 
 import java.util.List;
@@ -8,10 +5,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author jet
- *
- */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ForecastInfo {
 

@@ -2,13 +2,6 @@ package com.jet.cp.user.domain;
 
 import java.io.Serializable;
 
-/**
- * Title: User.java<br>
- * Description: <br>
- * Created: 17-Mar-2016<br>
- * Copyright: Copyright (c) 2015<br>
- * @author Teja Sasank Gorthi (jet.sasank@gmail.com)
- */
 public class User implements Serializable{
    private static final long serialVersionUID = 1L;
 
