@@ -1,0 +1,33 @@
+<html>
+   <body>
+      <h2>Hi There ! Good Morning ! </h2>
+      <p> Current Temperature in ${weatherInfo.city}, ${weatherInfo.countryCode} &nbsp; is ${weatherInfo.weather.temp}</p>
+      <p> Well, Today seems to be mostly ${weatherInfo.weather.weatherDesc}</p>
+      <table border="1" >
+         <tr>
+            <td>Max Temp</td>
+            <td>Min Temp</td>
+            <td>Humidity</td>
+         </tr>
+         <tr>
+            <td>${weatherInfo.weather.tempMax}</td>
+            <td>${weatherInfo.weather.tempMin}</td>
+            <td>${weatherInfo.weather.humidity}</td>
+         </tr>
+      </table>
+      <p>Here are a few restaurants in the City that you might want to try !</p>
+      <table >
+      #foreach ($business in ${yelp.businesses})
+          <tr>
+            <td><b>${business.name}</b>&nbsp;${business.rating}/5 Stars !</td>
+         </tr>
+         <tr>
+            <td>${business.snippet_text}&nbsp;<a href= ${business.url}>Read More</a></td>
+         </tr>
+         <br/>
+      #end
+      </table>
+      <p> Thank you !</p>
+      <p> Team City Info Guide</p>
+   </body>
+</html>

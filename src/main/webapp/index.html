@@ -1,0 +1,208 @@
+<!doctype html>
+<!-- Author : Teja Sasank Gorthi -->
+<html>
+   <head>
+      <title>City Guide</title>
+      <meta charset="UTF-8">
+      <!-- Angular -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+      <!-- View Config files -->
+      <link rel="stylesheet" type="text/css" href="app.css">
+      <script src="app.js"></script>
+      <!-- BootStrap Dependency files -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+      <!-- Google Autocomplete -->
+      <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en"></script>
+   </head>
+   <body class= "body">
+      <div id="top" ng-app = "dashBoardApp">
+         <div class="container" ng-controller="MainCtrl">
+         <!-- Header nav bar -->
+            <div class="mynav">
+                  <a href="https://travis-ci.org/jetsasank/CP" target="_blank"><img src="https://travis-ci.org/jetsasank/CP.svg?branch=master" class="pull-left-img"></a>
+                  <button type="button" class="btn btn-primary btn-sm outline pull-right" ng-click="existingUser()"><span class="glyphicon glyphicon-user"></span>&nbsp;Existing User</button>
+                  <button type="button" class="btn btn-primary btn-sm outline pull-right" ng-click="newUser()"><span class="glyphicon glyphicon-user"></span>&nbsp;New User</button>
+            </div>
+            <br/>
+            <!-- Banner Alert Messages -->
+             <div ng-show="loading">
+                  <div class="alert alert-info">
+                      <strong>Please wait while we are processing what you need !</strong>
+                  </div>
+             </div>
+            <div class="alert alert-success" ng-show="success_alert">
+               <strong>Success!</strong> Our Records are updated !
+            </div>
+
+            <!-- Existing User form-->
+            <form class="form-signin myborder" method="get" ng-show="exist_user">
+               <h1 style="color:white;">Existing User</h1>
+               <label for="existingEmailId" style="color:white;">My Email Id</label>
+               <input type="text" id="existingEmailId" ng-model="existingEmailId" class="form-control" required autofocus>
+               <br/>
+               <button type="button" class="btn btn-primary btn-sm outline" ng-click="getUserInfo()">Go fetch my preferences!</button>
+               <button type="button" class="btn btn-danger btn-sm outline" ng-click="notInterested()">Cancel</button>
+            </form>
+
+             <!-- New User form -->
+            <form class="form-signin" method="get" ng-show="new_user">
+               <h1 style="color:white;">New User</h1>
+               <label for="emailId" style="color:white;">My Email Id</label>
+               <input type="text" id="emailId" ng-model="emailId" class="form-control" required autofocus>
+               <br/>
+               <label for="emailPref" style="color:white;">I want emails</label>
+               <br/>
+               <input id="daily" type="radio" ng-model="emailPref" value="D" />
+               <label style="color:white;">Daily</label>
+               &nbsp;&nbsp;&nbsp;
+               <input id="weekly" type="radio" ng-model="emailPref" value="W" />
+               <label style="color:white;">Weekly</label>
+               &nbsp;&nbsp;&nbsp;
+               <br/>
+               <label for="userlocation" style="color:white;">I would like information about the below city</label>
+               <input type="text" id="userlocation" ng-model="userlocation" class="form-control">
+               <br/>
+               <button type="button" class="btn btn-primary btn-sm outline" ng-click="createUser()">Create!</button>
+               <button type="button" class="btn btn-danger btn-sm outline" ng-click="notInterested()">Cancel</button>
+            </form>
+
+            <!-- Loading User data-->
+            <form class="form-signin" method="get" ng-show="usr_loaded">
+               <h1 style="color:white;">Welcome Back</h1>
+               <label for="emailId" style="color:white;">My Email Id</label>
+               <input type="text" id="emailId" ng-model="emailId" class="form-control" disabled>
+               <br/>
+               <label for="emailPref" style="color:white;">I want emails</label>
+               <br/>
+               <input id="daily" type="radio" ng-model="emailPref" value="D" />
+               <label style="color:white;">Daily</label>
+               &nbsp;&nbsp;&nbsp;
+               <input id="weekly" type="radio" ng-model="emailPref" value="W" />
+               <label style="color:white;">Weekly</label>
+               &nbsp;&nbsp;&nbsp;
+               <input id="optout" type="radio" ng-model="emailPref" value="N" />
+               <label style="color:white;">Opt Out</label>
+               &nbsp;&nbsp;&nbsp;
+               <br/>
+               <label for="userlocation" style="color:white;">I would like information about the below city</label>
+               <input type="text" id="userlocation" ng-model="userlocation" class="form-control">
+               <br/>
+               <button type="button" class="btn btn-primary btn-sm outline" ng-click="updateUser()">Update!</button>
+               <button type="button" class="btn btn-danger btn-sm outline" ng-click="notInterested()">Cancel</button>
+            </form>
+
+
+
+            <!-- City Info Modules -->
+            <div ng-show="noProfileNoise">
+            <form class="form-signin" ng-init="tempunits=metric">
+               <label for="cityName" style="color:white;">Get me information about</label>
+               <input type="text" id="cityName" ng-model="cityName" class="form-control" required autofocus>
+               <br/>
+               <input id="celsius" type="radio" ng-model="tempunits" value="metric" />
+               <label style="color:white;">&deg;C</label>
+               &nbsp;&nbsp;&nbsp;
+               <input id="fahrenheit" type="radio" ng-model="tempunits" value="imperial"/>
+               <label style="color:white;">&deg;F</label>
+               &nbsp;&nbsp;&nbsp;
+               <br/>
+               <button type="button" class="btn btn-primary btn-sm outline" ng-click="getCityInfo()">Go!&nbsp;<span class="glyphicon glyphicon-menu-right"></span><span class="glyphicon glyphicon-menu-right"></span></button>
+            </form>
+            <br/>
+
+            <!-- Current Weather-->
+            <div class="container" id = "weather" ng-if="info">
+               <ul class="list-group bck">
+                  <li class="list-group-item bck">
+                     &nbsp;&nbsp;
+                     <p><b>Current weather in {{currentWeather.city}},{{currentWeather.countryCode}}</b></p>
+                     <br/>
+                     <p>
+                        <img ng-src="{{currentWeather.weather.iconUrl}}" class="img-thumbnail img_slides" style="float:left;">
+                     <h3><b>&nbsp;&nbsp;{{currentWeather.weather.temp}}&deg;</b></h3>
+                     <b>&nbsp;&nbsp;{{currentWeather.weather.main_desc}}</b>
+                     <br/>
+                     <b>&nbsp;&nbsp;Humidity : {{currentWeather.weather.humidity}}%&nbsp;&nbsp; Clouds   : {{currentWeather.weather.clouds}}%</b>
+                     </p>
+                     <br/>
+                     <p> <span class="glyphicon glyphicon-arrow-up"/>{{currentWeather.weather.tempMax}}&deg;&nbsp;<span class="glyphicon glyphicon-arrow-down"/>{{currentWeather.weather.tempMin}}&deg;</p>
+                     <button type="button" class="btn btn-primary btn-sm outline pull-right" ng-click="getForecast()" ng-show="showforecast">Forecast<span class="glyphicon glyphicon-menu-right"></span> </button>
+                     <br/>
+                     <br/>
+                  </li>
+               </ul>
+            </div>
+
+            <!-- Forecast Info-->
+            <div class="container" id = "forecast" ng-if="forecastitems">
+               <h1 style="color:white;">Forecast for {{currentWeather.city}},{{currentWeather.countryCode}}</h1>
+               <ul class="list-group bck" ng-repeat="item in forecastitems">
+                  <li class="list-group-item bck">
+                     <p><b>Forecast for {{item.date * 1000 | date:'EEEE, MMMM dd, yyyy'}}</b></p>
+                     <img ng-src="{{item.iconUrl}}" class="img-thumbnail img_slides_small" style="float:left;">
+                     <b>&nbsp;&nbsp;{{item.weatherDesc}}</b>
+                     <p> <span class="glyphicon glyphicon-arrow-up"/>{{item.tempMax}}&deg;&nbsp;<span class="glyphicon glyphicon-arrow-down"/>{{item.tempMin}}&deg;</p>
+                     <br/>
+                  </li>
+               </ul>
+            </div>
+
+            <!-- Google Feed-->
+            <div class="container bck" id = "googleFeed" ng-if="info">
+               <h1 style="color:white;">Google Feed</h1>
+               <ul class="list-group bck">
+                  <li class="list-group-item bck" ng-repeat="result in info.googleFeedResponse.responseData.results">
+                     &nbsp;&nbsp;
+                     <p>
+                        <img ng-src="{{result.image.url}}" class="img-thumbnail img_slides" style="float:left;">
+                        <b>&nbsp;&nbsp;{{result.titleNoFormatting}}</b>
+                        <br/>
+                        <b>&nbsp;&nbsp;{{result.publisher}}</b>
+                     </p>
+                     <br/>
+                     <div>{{result.content}}</div>
+                     <a href="{{result.unescapedUrl}}" class= "pull-right" target="_blank">Read more...&nbsp;<span class="glyphicon glyphicon-menu-right"></span> </a>
+                     <br/>
+                  </li>
+               </ul>
+            </div>
+
+            <!-- Yelp Feed-->
+            <div class="container" id = "yelpfeed" ng-if="info">
+               <h1 style="color:white;">Yelp Restaurants</h1>
+               <ul class="list-group bck">
+                  <li class="list-group-item bck" ng-repeat="result in info.yelpFeed.businesses">
+                     &nbsp;&nbsp;
+                     <p>
+                        <img ng-src="{{result.image_url}}" class="img-thumbnail img_slides" style="float:left;">
+                        <b>&nbsp;&nbsp;{{result.name}}</b>
+                     </p>
+                     <br/>
+                     <div>
+                        <p>
+                           &nbsp;Ratings : {{result.rating}}<br/>
+                        </p>
+                        <a href="#">&nbsp;<span class="glyphicon glyphicon-earphone"></span>&nbsp;{{result.phone}}</a>
+                        <br/>
+                        <br/>
+                        <p><b><span class="glyphicon glyphicon-comment"></span>&nbsp;Customer Review</b></p>
+                        <p>{{result.snippet_text}}</p>
+                        <a href="{{result.url}}" class="pull-right" target="_blank">Know more...&nbsp;<span class="glyphicon glyphicon-menu-right"></span> </a>
+                     </div>
+                     <br/>
+                  </li>
+               </ul>
+               <button type="button" class="btn btn-primary btn-sm outline" ng-click="scrollTo('top')"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;Go to top</button>
+            </div>
+            </div>
+         </div>
+      </div>
+      <footer class="navbar-default navbar-inverse navbar-fixed-bottom">
+         <div class="container-fluid">
+          <a href="https://github.com/jetsasank/CP" target="_blank"><img src="img/octocat.png" class="univerimg"></a>
+          <a href="/swagger-ui.html" target="_blank"><img src="img/swagger-logo.png" class="swaggerlogo"></a>
+         </div>
+      </footer>
+   </body>
+</html>
